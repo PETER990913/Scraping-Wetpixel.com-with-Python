@@ -11,7 +11,7 @@ import re
 import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
 print("-----------Automation Scraping is successfully started------------")
-driver = uc.Chrome(driver_executable_path=ChromeDriverManager(version='114.0.5735.90').install())
+driver = uc.Chrome(driver_executable_path=ChromeDriverManager().install())
 driver.maximize_window()
 URL = "https://wetpixel.com/forums/"
 driver.get(URL)
@@ -32,7 +32,7 @@ for i in range(len(Elements)):
         print(Category_URL)
     except:
         pass
-    driver1 = uc.Chrome(driver_executable_path=ChromeDriverManager(version='114.0.5735.90').install())
+    driver1 = uc.Chrome(driver_executable_path=ChromeDriverManager().install())
     driver1.maximize_window()    
     driver1.get(Category_URL)
     Forum_Elements = driver1.find_elements(By.XPATH, '//*[@id="ipsLayout_mainArea"]/div[2]/ol/li/div[2]/h4/a')
@@ -41,7 +41,7 @@ for i in range(len(Elements)):
         Forum_URL = Forum_Element.get_attribute('href')
         print("Forum Name:", Forum)
         print(Forum_URL)
-        driver2 = uc.Chrome(driver_executable_path=ChromeDriverManager(version='114.0.5735.90').install())
+        driver2 = uc.Chrome(driver_executable_path=ChromeDriverManager().install())
         driver2.maximize_window()    
         driver2.get(Forum_URL)
         pages_number_text = driver2.find_elements(By.CLASS_NAME, 'ipsPagination_pageJump')[0].text
@@ -55,7 +55,7 @@ for i in range(len(Elements)):
             for Datatable in Datatables:
                 Final_URL = Datatable.find_elements(By.TAG_NAME, 'a')[0].get_attribute('href')
                 print(Final_URL)
-                driver3 = uc.Chrome(driver_executable_path=ChromeDriverManager(version='114.0.5735.16').install())
+                driver3 = uc.Chrome(driver_executable_path=ChromeDriverManager().install())
                 driver3.maximize_window()
                 driver3.get(Final_URL)
                 ele = driver3.find_elements(By.XPATH, '//*[@id="ipsLayout_mainArea"]/div[1]/div[3]/div/h1/span')
